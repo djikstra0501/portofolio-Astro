@@ -1,11 +1,33 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import Carousel from "../components/Carousel.astro";
+import Footer from "../components/Footer.astro";
+import { projects } from "../data/projects";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Dananjaya | Backend & ML Engineer">
+  <Hero />
+
+  <Section title="Projects">
+    <Carousel projects={projects} />
+  </Section>
+
+  <Section title="Research Interests">
+    <ul>
+      <li>Computer Vision Optimization</li>
+      <li>Forecasting & Time Series</li>
+      <li>Decision Support Systems</li>
+      <li>Applied Machine Learning</li>
+      <li>Backend System Architecture</li>
+    </ul>
+  </Section>
+
+  <Section title="Currently Learning">
+    <p>
+      Exploring Go for backend performance-oriented services and concurrent systems.
+    </p>
+  </Section>
+  <Footer />
 </Layout>

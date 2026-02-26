@@ -1,0 +1,14 @@
+---
+const { title, description, tech } = Astro.props;
+---
+
+<div class="project-card">
+  <h3>{title}</h3>
+  <p>{description}</p>
+
+  <div class="tech">
+    {tech.map((t: string) => (
+      <span>{t}</span>
+    ))}
+  </div>
+</div>

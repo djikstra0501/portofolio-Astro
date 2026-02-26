@@ -1,0 +1,126 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+const { projects } = Astro.props;
+
+// Duplicate projects for seamless infinite scroll
+const duplicatedProjects = [...projects, ...projects, ...projects];
+---
+
+<div class="carousel-container">
+  <div class="carousel-track">
+    {duplicatedProjects.map((project, index) => (
+      <div class="carousel-slide" data-index={index}>
+        <ProjectCard {...project} />
+      </div>
+    ))}
+  </div>
+  
+  <!-- Gradient fade edges for smooth infinite effect -->
+  <div class="carousel-fade-left"></div>
+  <div class="carousel-fade-right"></div>
+</div>
+
+<style>
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 2rem 0;
+    margin: 0 -1rem;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 2rem;
+    animation: scroll 40s linear infinite;
+    width: fit-content;
+  }
+
+  .carousel-slide {
+    flex: 0 0 350px;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-slide:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+
+  /* Pause animation on hover */
+  .carousel-container:hover .carousel-track {
+    animation-play-state: paused;
+  }
+
+  /* Fade edges for smooth infinite effect */
+  .carousel-fade-left,
+  .carousel-fade-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .carousel-fade-left {
+    left: 0;
+    background: linear-gradient(90deg, var(--bg-primary) 0%, transparent 100%);
+  }
+
+  .carousel-fade-right {
+    right: 0;
+    background: linear-gradient(270deg, var(--bg-primary) 0%, transparent 100%);
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-350px * 4 - 2rem * 4));
+    }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .carousel-slide {
+      flex: 0 0 300px;
+    }
+
+    .carousel-fade-left,
+    .carousel-fade-right {
+      width: 50px;
+    }
+
+    @keyframes scroll {
+      100% {
+        transform: translateX(calc(-300px * 4 - 2rem * 4));
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .carousel-slide {
+      flex: 0 0 260px;
+    }
+
+    @keyframes scroll {
+      100% {
+        transform: translateX(calc(-260px * 4 - 2rem * 4));
+      }
+    }
+  }
+
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .carousel-track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .carousel-fade-left,
+    .carousel-fade-right {
+      display: none;
+    }
+  }
+</style>
