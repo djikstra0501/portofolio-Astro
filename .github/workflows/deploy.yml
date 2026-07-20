@@ -1,0 +1,30 @@
+name: Deploy portfolio
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-portfolio
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, portfolio-lxc]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - name: Publish to web root
+        run: |
+          test -f dist/index.html   # fail loudly if the build went SSR again
+          rsync -a --delete dist/ /var/www/portofolio/dist/
