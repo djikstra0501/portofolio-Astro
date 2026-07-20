@@ -58,7 +58,7 @@ export const projects: Project[] = [
     title: "GeoSales Analytics Platform",
     kind: "Platform",
     year: "2025 · Internship",
-    role: "Backend & data model owner",
+    role: "Backend & Data Model Owner",
     summary:
       "Multi-role, geo-enabled dashboard that pulls field visits, competitor sightings, outlet performance and complaint tickets into one monitoring view for sales ops and management.",
     detail:
@@ -75,7 +75,7 @@ export const projects: Project[] = [
     title: "Internship Application & Management System",
     kind: "Platform",
     year: "2025 · Internship",
-    role: "Backend & database",
+    role: "Backend & Database",
     summary:
       "End-to-end workflow for internship intake. Application submission, review states, placement records and reporting in one platform, replacing a manual, document-driven process.",
     detail:
@@ -88,7 +88,7 @@ export const projects: Project[] = [
   },
   {
     id: "hiv-forecast",
-    title: "HIV case forecasting — Brown vs Holt",
+    title: "HIV Case Forecasting — Brown vs Holt",
     kind: "Analysis",
     year: "2024-2026",
     role: "Solo",
@@ -105,7 +105,7 @@ export const projects: Project[] = [
   },
   {
     id: "lstm-stock",
-    title: "LSTM next-day close forecasting",
+    title: "LSTM Next-Day Close Forecasting",
     kind: "Analysis",
     year: "2024",
     role: "Solo",
