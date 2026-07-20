@@ -2,32 +2,48 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import Section from "../components/Section.astro";
-import Carousel from "../components/Carousel.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import Capabilities from "../components/Capabilities.astro";
+import Timeline from "../components/Timeline.astro";
 import Footer from "../components/Footer.astro";
 import { projects } from "../data/projects";
+
+const featured = projects.filter((p) => p.featured);
+const rest = projects.filter((p) => !p.featured);
 ---
 
-<Layout title="Dananjaya | Backend & ML Engineer">
+<Layout
+  title="Dananjaya — computer vision, deployment, backend"
+  description="Computer vision research (patent filed, journal manuscript in review), edge and cloud model deployment, and backend data systems."
+>
   <Hero />
 
-  <Section title="Projects">
-    <Carousel projects={projects} />
+  <Section id="work" label="Selected work" title="Research first, then everything it takes to ship it.">
+    <div class="stack">
+      {featured.map((p, i) => <ProjectCard {...p} index={i} />)}
+    </div>
   </Section>
 
-  <Section title="Research Interests">
-    <ul>
-      <li>Computer Vision Optimization</li>
-      <li>Forecasting & Time Series</li>
-      <li>Decision Support Systems</li>
-      <li>Applied Machine Learning</li>
-      <li>Backend System Architecture</li>
-    </ul>
+  <Section label="Also built" title="Platforms, backends and analysis.">
+    <div class="stack">
+      {rest.map((p, i) => <ProjectCard {...p} index={i + featured.length} />)}
+    </div>
   </Section>
 
-  <Section title="Currently Learning">
-    <p>
-      Exploring Go for backend performance-oriented services and concurrent systems.
-    </p>
+  <Section id="capabilities" label="What the work proves" title="Grouped by capability, not by calendar.">
+    <Capabilities />
   </Section>
+
+  <Section label="Path" title="How it happened.">
+    <Timeline />
+  </Section>
+
   <Footer />
 </Layout>
+
+<style>
+  .stack {
+    display: grid;
+    gap: 1.25rem;
+  }
+</style>

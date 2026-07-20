@@ -1,34 +1,199 @@
 ---
-// No props needed for hero
+import { profile } from "../data/profile";
 ---
 
 <section class="hero">
-  <h1>Hi, I'm Dananjaya</h1>
-  <p class="subtitle">
-    Backend Developer · Applied Machine Learning · Computer Vision Researcher
-  </p>
+  <p class="eyebrow tag">Detected · 1 object</p>
 
-  <p class="description">
-    I build backend systems and apply machine learning to solve real-world
-    problems — from forecasting and decision support systems to computer
-    vision and automation.
-  </p>
+  <div class="frame">
+    <span class="chip">
+      <span class="chip-class">Dananjaya</span>
+      <span class="chip-conf">{profile.confidence}</span>
+    </span>
 
-  <div class="stack">
-    <div class="tech-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="tech-logo" />
-    </div>
-    <div class="tech-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" class="tech-logo" />
-    </div>
-    <div class="tech-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="tech-logo" />
-    </div>
-    <div class="tech-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R" class="tech-logo" />
-    </div>
-    <div class="tech-item">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" alt="Go" class="tech-logo" />
-    </div>
+    <h1>
+      Builds models<br />that leave<br /><span class="em">the notebook.</span>
+    </h1>
+
+    <span class="corner tl"></span>
+    <span class="corner tr"></span>
+    <span class="corner bl"></span>
+    <span class="corner br"></span>
+  </div>
+
+  <p class="lede">{profile.lede}</p>
+
+  <ul class="roles">
+    {profile.roles.map((r) => <li class="tag">{r}</li>)}
+  </ul>
+
+  <div class="actions">
+    <a class="btn primary" href="#work">See the work</a>
+    <a class="btn" href={profile.resume}>Download CV</a>
   </div>
 </section>
+
+<style>
+  .hero {
+    padding: clamp(3rem, 10vh, 6rem) 0 clamp(3rem, 8vh, 5rem);
+  }
+
+  .eyebrow {
+    margin-bottom: 1.5rem;
+    color: var(--ndvi);
+  }
+
+  .frame {
+    position: relative;
+    display: inline-block;
+    padding: 1.75rem 2rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px dashed rgba(232, 179, 60, 0.28);
+    pointer-events: none;
+  }
+
+  .chip {
+    position: absolute;
+    top: -0.85rem;
+    left: -1px;
+    display: inline-flex;
+    align-items: stretch;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .chip-class {
+    background: var(--signal);
+    color: #16110a;
+    padding: 0.2rem 0.5rem;
+    font-weight: 500;
+  }
+
+  .chip-conf {
+    background: rgba(232, 179, 60, 0.16);
+    color: var(--signal);
+    padding: 0.2rem 0.45rem;
+  }
+
+  h1 {
+    font-size: clamp(2.6rem, 8.5vw, 5.2rem);
+    letter-spacing: -0.035em;
+  }
+
+  .em {
+    color: var(--signal);
+  }
+
+  .corner {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--signal);
+  }
+  .tl {
+    top: -1px;
+    left: -1px;
+    border-right: 0;
+    border-bottom: 0;
+  }
+  .tr {
+    top: -1px;
+    right: -1px;
+    border-left: 0;
+    border-bottom: 0;
+  }
+  .bl {
+    bottom: -1px;
+    left: -1px;
+    border-right: 0;
+    border-top: 0;
+  }
+  .br {
+    bottom: -1px;
+    right: -1px;
+    border-left: 0;
+    border-top: 0;
+  }
+
+  .lede {
+    max-width: 52ch;
+    color: var(--mute);
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+  }
+
+  .roles {
+    list-style: none;
+    padding: 0;
+    margin: 1.75rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+  }
+
+  .roles li {
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .roles li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: 5px;
+    height: 5px;
+    background: var(--ndvi);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+  }
+
+  .btn {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    padding: 0.7rem 1.25rem;
+    border: 1px solid var(--line);
+    color: var(--bone);
+    transition:
+      border-color 0.18s ease,
+      color 0.18s ease,
+      background 0.18s ease;
+  }
+
+  .btn:hover {
+    border-color: var(--signal);
+    color: var(--signal);
+  }
+
+  .btn.primary {
+    background: var(--signal);
+    border-color: var(--signal);
+    color: #16110a;
+    font-weight: 500;
+  }
+
+  .btn.primary:hover {
+    background: transparent;
+    color: var(--signal);
+  }
+
+  @media (max-width: 560px) {
+    .frame {
+      padding: 1.5rem 1.25rem 1.25rem;
+    }
+  }
+</style>

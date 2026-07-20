@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Exclude Draft Features
+draft/
+src/pages/draft-feat

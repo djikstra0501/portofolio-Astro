@@ -1,8 +1,32 @@
 ---
-const { title } = Astro.props;
+const { title, label, id } = Astro.props;
 ---
 
-<section class="section">
-  <h2>{title}</h2>
+<section class="section" id={id}>
+  <div class="section-head">
+    {label && <p class="tag label">{label}</p>}
+    <h2>{title}</h2>
+  </div>
   <slot />
 </section>
+
+<style>
+  .section {
+    padding: clamp(3rem, 8vh, 5rem) 0;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .section-head {
+    margin-bottom: 2.25rem;
+  }
+
+  .label {
+    color: var(--signal);
+    margin-bottom: 0.6rem;
+  }
+
+  h2 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 600;
+  }
+</style>
