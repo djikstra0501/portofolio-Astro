@@ -26,4 +26,4 @@ jobs:
       - name: Publish to web root
         run: |
           test -f dist/index.html   # fail loudly if the build went SSR again
-          rsync -a --delete dist/ /var/www/portofolio/dist/
+          rsync -rlptD --delete dist/ /var/www/portofolio/dist/
