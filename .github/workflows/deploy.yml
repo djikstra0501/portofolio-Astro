@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   deploy:
-    runs-on: [self-hosted, portfolio-lxc]
+    runs-on: [self-hosted, portofolio-lxc]
     steps:
       - uses: actions/checkout@v4
 
