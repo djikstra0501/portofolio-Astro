@@ -28,7 +28,7 @@ export const projects: Project[] = [
       { label: "classes", value: "13" },
       { label: "seeds", value: "3 (0/14/56)" },
       { label: "target", value: "Jetson Nano" },
-      { label: "mAP@50", value: "72.2%" },
+      { label: "mAP@50", value: "72.4%" },
     ],
     tech: ["PyTorch", "YOLO11", "Grad-CAM", "Roboflow", "CUDA / T4"],
     status: "Journal manuscript in review",
