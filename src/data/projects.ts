@@ -47,7 +47,7 @@ export const projects: Project[] = [
     metrics: [
       { label: "input", value: "UAV imagery" },
       { label: "serving", value: "Cloud Run" },
-      { label: "output", value: "ranked points" },
+      { label: "output", value: "GPS inspection points" },
     ],
     tech: ["Python", "GCP Cloud Run", "Docker", "Rasterio", "scikit-learn"],
     status: "Patent filed",
