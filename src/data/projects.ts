@@ -11,7 +11,10 @@ export type Project = {
   links?: { label: string; href: string }[];
   status?: string;
   featured?: boolean;
+  imageAlt?: string;
 };
+
+export const isPlaceholder = (value: string) => value.startsWith("TODO");
 
 export const projects: Project[] = [
   {
@@ -26,11 +29,14 @@ export const projects: Project[] = [
       "Most field-deployable detectors lose small-lesion classes when you shrink them for edge hardware. DaYa-YOLO adds a Chromatic Feature Encoder as an auxiliary branch with two variants, one operating in CIELAB and one in CIEXYZ, so colour information that a standard RGB backbone flattens stays available to the detection head. Every result is reported as a mean across three training seeds rather than a single lucky run, and localisation was validated with a box-conditioned Grad-CAM rather than a class-agnostic saliency method, because class-agnostic maps kept peaking on background sky instead of the lesion.",
     metrics: [
       { label: "classes", value: "13" },
-      { label: "seeds", value: "3 (0/14/56)" },
+      { label: "seeds", value: "5 (0/14/42/56/81)" },
       { label: "target", value: "Jetson Nano" },
       { label: "mAP@50", value: "72.4%" },
     ],
     tech: ["PyTorch", "YOLO11", "Grad-CAM", "Roboflow", "CUDA / T4"],
+    links: [{ label: "Code", href: "https://github.com/djikstra0501/DaYa-YOLO" }],
+    imageAlt:
+      "DaYa-YOLO detections on a rice plant image, with bounding boxes and class labels",
     status: "Journal manuscript in review",
     featured: true,
   },
@@ -50,8 +56,55 @@ export const projects: Project[] = [
       { label: "output", value: "GPS inspection points" },
     ],
     tech: ["Python", "GCP Cloud Run", "Docker", "Rasterio", "scikit-learn"],
+    imageAlt:
+      "Result map of a plantation divided into a grid, with low-vigour NDVI regions marked",
     status: "Patent filed",
     featured: true,
+  },
+  {
+    id: "voltscout",
+    title: "VoltScout — field intelligence for EV charging networks",
+    kind: "Platform",
+    year: "2026",
+    role: "Solo · Design, backend, frontend",
+    summary:
+      "A role-scoped web platform for what a charger cannot report about itself: a car parked in the bay, a cut cable, a rival site under construction. Field engineers file from a phone, supervisors close the issues, and national reads everything on one map.",
+    detail:
+      "The interesting part is access, not screens. Every scope (one zone, one territory, everything) is defined in a single method, and the server works out each record's location from the chosen site instead of trusting what the form sent. Evidence photos sit in private storage and are served through a route that checks the viewer's coverage. Reports carry an observation date separate from the day they were entered, because engineers often file after leaving a basement car park with no signal. The data is seeded, and no session or uptime figures are simulated, since that would be invented analysis.",
+    metrics: [
+      { label: "access tiers", value: "3" },
+      { label: "report types", value: "4" },
+      { label: "seeded sites", value: "86" },
+    ],
+    tech: ["Laravel 12", "MySQL", "Alpine.js", "Tailwind 4", "Leaflet"],
+    links: [
+      { label: "Code", href: "https://github.com/djikstra0501/VoltScout" }, 
+      // { label: "Demo video", href: "TODO-voltscout-demo-video-url" },
+    ],
+    imageAlt:
+      "VoltScout national map with clustered charging sites coloured by open issues, beside an issue summary",
+  },
+  {
+    id: "bloome-craft",
+    title: "Bloome Craft — flower shop catalogue and bookkeeping",
+    kind: "Platform",
+    year: "2026",
+    role: "Solo · Design, backend, frontend, deployment",
+    summary:
+      "A public catalogue and a private owner dashboard for a real flower shop, running entirely on Cloudflare's edge network.",
+    detail:
+      "Built for an actual small business, so the constraints were practical. Passwords use PBKDF2 through Web Crypto because bcrypt cannot run on Cloudflare Workers, with the iteration count tuned to the free tier's CPU limit. Recording a sale writes the sale and its derived costs in one atomic batch, so a failed write cannot leave half a transaction in the ledger. It deploys from Git through Workers Builds onto a custom domain.",
+    metrics: [
+      { label: "runtime", value: "Cloudflare Workers" },
+      { label: "database", value: "D1" },
+      { label: "status", value: "Live" },
+    ],
+    tech: ["SvelteKit", "Cloudflare Workers", "D1", "Web Crypto"],
+    links: [
+      { label: "Live site", href: "https://bloomecraft.dananjaya.my.id/" },
+      { label: "Code", href: "https://github.com/djikstra0501/bloome-svelte-cloudflare" },
+    ],
+    imageAlt: "Bloome Craft storefront catalogue showing flower arrangements",
   },
   {
     id: "geosales",

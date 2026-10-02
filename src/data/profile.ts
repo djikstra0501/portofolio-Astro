@@ -2,7 +2,7 @@ export const profile = {
   name: "Dananjaya",
   fullName: "I Kadek Dipastra Arka Dananjaya",
   confidence: "0.98",
-  roles: ["Computer Vision Research", "Model Deployment", "Backend & Data"],
+  roles: ["Computer Vision & ML", "Model Deployment", "Backend & Cloud"],
   location: "Surabaya, Indonesia",
   email: "dipastra04@gmail.com",
   resume: "/dananjaya-cv.pdf",
@@ -18,42 +18,42 @@ export type Capability = {
   evidence: string[];
 };
 
-/* Grouped by what the work demonstrates, not by chronology.
-   A recruiter reads this in ~15 seconds; make each line carry proof. */
 export const capabilities: Capability[] = [
   {
     title: "Research & Modelling",
     note: "Architecture design, ablation, statistics-based reporting.",
     evidence: [
-      "DaYa-YOLO dual-branch detector — patent filed, manuscript in review",
-      "Multi-seed evaluation, not single-run headline numbers",
-      "Box-conditioned Grad-CAM for localisation validation",
+      "Lead author on a journal manuscript in review (DaYa-YOLO)",
+      "13-class detector at 72.4% mAP@50, a mean over three seeds, not one run",
+      "Box-conditioned Grad-CAM, because class-agnostic maps peaked on sky, not lesion",
     ],
   },
   {
     title: "Deployment",
-    note: "Two very different targets, both shipped.",
+    note: "Three very different targets, all shipped.",
     evidence: [
-      "Edge: quantised detector running on Jetson Nano",
-      "Cloud: containerised NDVI service on GCP Cloud Run",
-      "AWS Certified Cloud Practitioner · Cloud Quest",
+      "Edge device: quantised detector running on a Jetson Nano",
+      "Cloud: containerised NDVI service on GCP Cloud Run, patent filed",
+      "Edge network: live SvelteKit app on Cloudflare Workers and D1",
+      "AWS Trained Cloud Practitioner · Cloud Quest",
     ],
   },
   {
     title: "Backend & Data",
-    note: "Schema ownership on two production internships.",
+    note: "Role-scoped systems, built end to end.",
     evidence: [
-      "Relational design for multi-role analytics (MySQL)",
-      "Workflow-state modelling, not status-string CRUD",
-      "REST APIs consumed by dashboards in daily use",
+      "Access rules written once and enforced on the server, never only in the UI",
+      "Private evidence files served only to viewers whose coverage includes them",
+      "Atomic batched writes and CHECK constraints on a live ledger (D1)",
+      "Relational design for multi-role analytics and workflow states (MySQL), from two internships",
     ],
   },
   {
     title: "Applied Statistics",
     note: "Comparative method selection, error-first evaluation.",
     evidence: [
-      "Brown vs Holt double exponential smoothing (R)",
-      "Sequence modelling with engineered volatility features",
+      "Brown vs Holt smoothing compared on forecast error, not in-sample fit (R)",
+      "LSTM forecasting with volatility features, and an honest read: no tradeable edge",
     ],
   },
 ];
@@ -71,6 +71,12 @@ export const timeline: TimelineItem[] = [
     title: "Final-year research",
     org: "Undergraduate thesis",
     note: "DaYa-YOLO: journal manuscript in review.",
+  },
+  {
+    year: "2026",
+    title: "Full-stack projects",
+    org: "Independent",
+    note: "VoltScout, a role-scoped field platform, and Bloome Craft, a live shop on Cloudflare Workers.",
   },
   {
     year: "2025",
